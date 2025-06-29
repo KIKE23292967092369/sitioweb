@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Análisis de Superficies a Maquinar</title>
+  <!-- Hoja de estilos principal -->
+  <link rel="stylesheet" href="style.css?v=1" />
+
+  <!-- Estilos mínimos para el carrusel -->
+  <style>
+    /* === Galería / Carrusel === */
+    #imagenes {
+      padding: 40px 20px;
+      background: #f5f5f5;
+      text-align: center;
+    }
+    #imagenes h2 {
+      margin-bottom: 25px;
+      font-size: 1.8rem;
+    }
+
+    .carousel {
+      position: relative;
+      overflow: hidden;
+      max-width: 900px;
+      margin: 0 auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+    .carousel-images {
+      display: flex;
+      transition: transform 0.45s ease-in-out;
+    }
+    .carousel-images img {
+      width: 100%;           /* Se mostrará de ancho completo */
+      flex-shrink: 0;        /* Cada imagen ocupa el 100% */
+      border: 0;
+    }
+
+    /* Botones de navegación */
+    .prev,
+    .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.6);
+      border: none;
+      color: #fff;
+      padding: 12px 18px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      border-radius: 50%;
+      user-select: none;
+    }
+    .prev { left: 15px; }
+    .next { right: 15px; }
+    .prev:hover,
+    .next:hover { background: rgba(0,0,0,0.8); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Análisis de Superficies a Maquinar</h1>
+    <p>Importancia del estudio técnico en el mecanizado</p>
+  </header>
+
+  <!-- ===== Menú de navegación ===== -->
+  <nav>
+    <ul>
+      <li><a href="#">Inicio</a></li>
+      <li><a href="#">Superficies</a></li>
+      <li><a href="#">Herramientas</a></li>
+      <li><a href="#">Análisis</a></li>
+      <li><a href="#">Contacto</a></li>
+      <li><a href="documento.pdf" download>📄 Documento PDF</a></li>
+      <li><a href="#imagenes">Galerías</a></li> <!-- NUEVO apartado -->
+    </ul>
+  </nav>
+
+  <!-- Bloque destacado -->
+  <section class="bloque-importante">
+    <h2>📊 Análisis Técnico de Superficies</h2>
+    <p>Explora los tipos más comunes de superficies a maquinar y los factores clave que se deben analizar para obtener precisión industrial.</p>
+  </section>
+
+  <main>
+    <section>
+      <h2>¿Qué es el Análisis de Superficies?</h2>
+      <p>Es el estudio detallado de la calidad superficial de las piezas a maquinar. Se evalúan parámetros como rugosidad, forma, orientación y ondulación.</p>
+      <img src="medicion.png" alt="Máquina de medición" class="img-pequena">
+    </section>
+
+    <section>
+      <h2>Tipos de Superficies</h2>
+      <ul>
+        <li>🔹 Superficies Planas</li>
+        <li>🔸 Superficies Cilíndricas</li>
+        <li>🔹 Irregulares o Libres</li>
+        <li>🔸 Roscadas o Estriadas</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Factores del Análisis</h2>
+      <ul>
+        <li>✔️ Rugosidad superficial (Ra, Rz)</li>
+        <li>✔️ Material de la pieza</li>
+        <li>✔️ Herramienta de corte y velocidad</li>
+        <li>✔️ Acabado requerido</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- ===== SECCIÓN DE GALERÍAS ===== -->
+  <section id="imagenes">
+    <h2>📷 Galería de Imágenes</h2>
+
+    <div class="carousel">
+      <div class="carousel-images">
+        <!-- Sustituye las rutas y nombres por los definitivos -->
+        <img src="imagenes/img1.jpg" alt="Imagen 1">
+        <img src="imagenes/img2.jpg" alt="Imagen 2">
+        <img src="imagenes/img3.jpg" alt="Imagen 3">
+        <img src="imagenes/img4.jpg" alt="Imagen 4">
+        <img src="imagenes/img5.jpg" alt="Imagen 5">
+        <img src="imagenes/img6.jpg" alt="Imagen 6">
+        <img src="imagenes/img7.jpg" alt="Imagen 7">
+      </div>
+      <button class="prev" aria-label="Imagen anterior">&#10094;</button>
+      <button class="next" aria-label="Imagen siguiente">&#10095;</button>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Enrique Zalazar – Ingeniería en Sistemas</p>
+  </footer>
+
+  <!-- ===== Script para controles del carrusel ===== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const track = document.querySelector('.carousel-images');
+      const slides = Array.from(track.children);
+      const btnPrev = document.querySelector('.prev');
+      const btnNext = document.querySelector('.next');
+      let index = 0;
+
+      const updatePosition = () => {
+        track.style.transform = `translateX(-${index * 100}%)`;
+      };
+
+      btnNext.addEventListener('click', () => {
+        index = (index + 1) % slides.length;
+        updatePosition();
+      });
+
+      btnPrev.addEventListener('click', () => {
+        index = (index - 1 + slides.length) % slides.length;
+        updatePosition();
+      });
+    });
+  </script>
+</body>
+</html>
